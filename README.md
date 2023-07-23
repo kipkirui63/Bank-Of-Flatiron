@@ -57,4 +57,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Feel free to customize the README further based on your project's specific setup and requirements. If you have any other questions or need further assistance, just let me know! Good luck with your Bank Transactions App, Enock!
