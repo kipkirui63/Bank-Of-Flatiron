@@ -1,3 +1,4 @@
+// TransactionForm.js
 import React, { useState } from 'react';
 
 const TransactionForm = ({ onAddTransaction }) => {
@@ -29,39 +30,40 @@ const TransactionForm = ({ onAddTransaction }) => {
     <div className="transaction-form-container">
       <h2>Add New Transaction</h2>
       <form onSubmit={handleSubmit}>
-        <div className='one'> 
-          <label>Date:</label>
+        <div className="form-field">
           <input
             type="text"
             name="date"
             value={transactionData.date}
+            placeholder="Date"
             onChange={handleChange}
           />
         </div>
-        <div className='one'>
-          <label>Description:</label>
+        <div className="form-field">
           <input
             type="text"
             name="description"
             value={transactionData.description}
+            placeholder="Description"
             onChange={handleChange}
           />
         </div>
-        <div className='one'>
-          <label>Category:</label>
+        <div className="form-field">
+          
           <input
             type="text"
             name="category"
             value={transactionData.category}
+            placeholder="Category"
             onChange={handleChange}
           />
         </div>
-        <div className='one'>
-          <label>Amount:</label>
+        <div className="form-field">
           <input
             type="text"
             name="amount"
             value={transactionData.amount}
+            placeholder="Amount"
             onChange={handleChange}
           />
         </div>

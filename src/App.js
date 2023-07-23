@@ -27,6 +27,12 @@ const App = () => {
     setFilteredTransactions([...filteredTransactions, newTransaction]);
   };
 
+  const deleteTransaction = (id) => {
+    // Filter out the transaction with the given id and update the transactions state
+    const updatedTransactions = transactions.filter((transaction) => transaction.id !== id);
+    setTransactions(updatedTransactions);
+  };
+
   const searchTransactions = (searchTerm) => {
     const filtered = transactions.filter((transaction) =>
       transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
@@ -39,7 +45,7 @@ const App = () => {
       <h1> <b>BANK OF FLATIRON</b> </h1>
       <TransactionForm onAddTransaction={addTransaction} />
       <SearchBar onSearch={searchTransactions} />
-      <TransactionTable transactions={filteredTransactions} />
+      <TransactionTable transactions={transactions} onDeleteTransaction={deleteTransaction} />
     </div>
   );
 };
