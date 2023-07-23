@@ -1,32 +1,73 @@
 import React, { useState } from 'react';
 
-const TransactionForm = ({ onSubmit }) => {
-  const [date, setDate] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
-  const [amount, setAmount] = useState('');
+const TransactionForm = ({ onAddTransaction }) => {
+  const [transactionData, setTransactionData] = useState({
+    date: '',
+    description: '',
+    category: '',
+    amount: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTransactionData({ ...transactionData, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ date, description, category, amount });
-    setDate('');
-    setDescription('');
-    setCategory('');
-    setAmount('');
+    // Perform any validation if needed
+    onAddTransaction(transactionData);
+    setTransactionData({
+      date: '',
+      description: '',
+      category: '',
+      amount: '',
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="date">Date:</label>
-      <input type="date" id="date" value={date} onChange={e => setDate(e.target.value)} required />
-      <label htmlFor="description">Description:</label>
-      <input type="text" id="description" value={description} onChange={e => setDescription(e.target.value)} required />
-      <label htmlFor="category">Category:</label>
-      <input type="text" id="category" value={category} onChange={e => setCategory(e.target.value)} required />
-      <label htmlFor="amount">Amount:</label>
-      <input type="number" id="amount" value={amount} onChange={e => setAmount(e.target.value)} required />
-      <button type="submit">Add Transaction</button>
-    </form>
+    <div>
+      <h2>Add New Transaction</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Date:</label>
+          <input
+            type="text"
+            name="date"
+            value={transactionData.date}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Description:</label>
+          <input
+            type="text"
+            name="description"
+            value={transactionData.description}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Category:</label>
+          <input
+            type="text"
+            name="category"
+            value={transactionData.category}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Amount:</label>
+          <input
+            type="text"
+            name="amount"
+            value={transactionData.amount}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Add Transaction</button>
+      </form>
+    </div>
   );
 };
 

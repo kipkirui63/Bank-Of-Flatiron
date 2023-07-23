@@ -1,32 +1,46 @@
-import React, { useState } from 'react';
-import TransactionTable from './TransactionTable';
-import TransactionForm from './TransactionForm';
+import React, { useState , useEffect} from 'react';
+import TransactionTable from './components.js/TransactionTable';
+import TransactionForm from './components.js/TransactionForm';
+import SearchBar from './components.js/SearchBar';
+
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
+  const [filteredTransactions, setFilteredTransactions] = useState([]);
 
-  const handleAddTransaction = (newTransaction) => {
-    setTransactions([...transactions, { ...newTransaction, id: transactions.length + 1 }]);
+  useEffect(() => {
+    // Fetch data from the API here (replace 'API_URL' with the actual API endpoint)
+    const API_URL = 'http://localhost:3000/transactions'; // Update with the correct URL
+    fetch(API_URL)
+      .then((response) => response.json())
+      .then((data) => {
+        setTransactions(data.transactions);
+        setFilteredTransactions(data.transactions);
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
+
+  
+  const addTransaction = (newTransaction) => {
+    setTransactions([...transactions, newTransaction]);
+    setFilteredTransactions([...filteredTransactions, newTransaction]);
   };
 
-  const handleFilterTransactions = (searchTerm) => {
-    const filteredTransactions = transactions.filter(transaction =>
+  const searchTransactions = (searchTerm) => {
+    const filtered = transactions.filter((transaction) =>
       transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setTransactions(filteredTransactions);
+    setFilteredTransactions(filtered);
   };
 
   return (
     <div>
-      <h1>Transaction Table</h1>
-      <TransactionForm onSubmit={handleAddTransaction} />
-      <label htmlFor="search">Search Transactions:</label>
-      <input type="text" id="search" onChange={(e) => handleFilterTransactions(e.target.value)} placeholder="Enter a search term" />
-      <TransactionTable transactions={transactions} />
+      <h1>Bank Transactions</h1>
+      <TransactionForm onAddTransaction={addTransaction} />
+      <SearchBar onSearch={searchTransactions} />
+      <TransactionTable transactions={filteredTransactions} />
     </div>
   );
 };
-
-
 
 export default App;
