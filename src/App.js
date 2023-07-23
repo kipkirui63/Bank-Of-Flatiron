@@ -10,7 +10,7 @@ const App = () => {
 
   useEffect(() => {
     // Fetch data from the API here (replace 'API_URL' with the actual API endpoint)
-    const API_URL = 'http://localhost:3000/transactions'; // Update with the correct URL
+    const API_URL = 'http://localhost:3000/transactions'; 
     fetch(API_URL)
       .then((response) => response.json())
       .then((data) => {
@@ -20,7 +20,7 @@ const App = () => {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  
+
   const addTransaction = (newTransaction) => {
     setTransactions([...transactions, newTransaction]);
     setFilteredTransactions([...filteredTransactions, newTransaction]);
