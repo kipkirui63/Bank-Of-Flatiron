@@ -2,6 +2,7 @@ import React, { useState , useEffect} from 'react';
 import TransactionTable from './components.js/TransactionTable';
 import TransactionForm from './components.js/TransactionForm';
 import SearchBar from './components.js/SearchBar';
+import './index.css';
 
 
 const App = () => {
@@ -13,9 +14,9 @@ const App = () => {
     const API_URL = 'http://localhost:3000/transactions'; 
     fetch(API_URL)
       .then((response) => response.json())
-      .then((data) => {
-        setTransactions(data.transactions);
-        setFilteredTransactions(data.transactions);
+      .then((transactions) => {
+        setTransactions(transactions);
+        setFilteredTransactions(transactions);
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
