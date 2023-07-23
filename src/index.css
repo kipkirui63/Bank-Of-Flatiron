@@ -23,6 +23,22 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+}
+
+.search-bar-container {
+  text-align: center;
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+#h2h1{
+  text-align: center;
+}
+
+#h2h{
+  text-align: center;
 }
 
 h2{

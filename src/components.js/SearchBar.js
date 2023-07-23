@@ -7,9 +7,9 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div id='h2h1'>
       <h2>Search Transactions</h2>
-      <input
+      <input id='h2h'
         type="text"
         placeholder="Search by description..."
         onChange={handleChange}
