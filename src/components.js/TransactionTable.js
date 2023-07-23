@@ -6,7 +6,7 @@ import React from 'react';
 const TransactionTable = ({ transactions, onDeleteTransaction }) => {
   return (
     <div>
-      <h2>Transaction Table</h2>
+      <h2>You're Transactions</h2>
       <table>
         <thead>
           <tr>

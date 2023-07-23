@@ -26,10 +26,10 @@ const TransactionForm = ({ onAddTransaction }) => {
   };
 
   return (
-    <div>
+    <div className="transaction-form-container">
       <h2>Add New Transaction</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className='one'> 
           <label>Date:</label>
           <input
             type="text"
@@ -38,7 +38,7 @@ const TransactionForm = ({ onAddTransaction }) => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className='one'>
           <label>Description:</label>
           <input
             type="text"
@@ -47,7 +47,7 @@ const TransactionForm = ({ onAddTransaction }) => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className='one'>
           <label>Category:</label>
           <input
             type="text"
@@ -56,7 +56,7 @@ const TransactionForm = ({ onAddTransaction }) => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className='one'>
           <label>Amount:</label>
           <input
             type="text"
