@@ -42,7 +42,9 @@ const App = () => {
 
   return (
     <div>
-      <h1> <b>BANK OF FLATIRON</b> </h1>
+      <h1> <b>BANK OF FLATIRON</b> <br/> 
+      <i>With you Always!</i>
+       </h1>
       <TransactionForm onAddTransaction={addTransaction} />
       <SearchBar onSearch={searchTransactions} />
       <TransactionTable transactions={transactions} onDeleteTransaction={deleteTransaction} />
