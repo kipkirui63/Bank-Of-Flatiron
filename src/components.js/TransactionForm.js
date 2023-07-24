@@ -16,7 +16,7 @@ const TransactionForm = ({ onAddTransaction }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform any validation if needed
+    // Perform validation if needed
     onAddTransaction(transactionData);
     setTransactionData({
       date: '',
